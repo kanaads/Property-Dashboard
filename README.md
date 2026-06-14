@@ -1,4 +1,4 @@
-# Propvia — Mini Property Dashboard
+# Mini Property Dashboard
 
 > **Live demo:** _add your Vercel URL here once deployed_ → `https://your-app.vercel.app`
 
