@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+/* Tailwind v4 design tokens — no tailwind.config.js needed (Phase 2).
+   Real-estate palette: deep navy primary, soft-blue accent. */
+@theme {
+  --color-navy-50: #eaf1f8;
+  --color-navy-100: #c9dcef;
+  --color-navy-500: #1f4f86;
+  --color-navy-700: #123a66;
+  --color-navy-900: #0a2c56;
+
+  --color-sky-accent: #89cefd;
+  --color-sky-soft: #d6ecfd;
+
+  --color-surface: #ffffff;
+  --color-canvas: #f5f7fa;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-canvas);
+  color: var(--color-navy-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible focus indicators for keyboard users (Phase 6 — WCAG focus rule). */
+*:focus-visible {
+  outline: 3px solid var(--color-sky-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip-link — visually hidden until focused (WCAG 2.4.1).
+   Defined here so it wins the cascade over any Tailwind base reset. */
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link:focus {
+  width: auto;
+  height: auto;
+  clip: auto;
+  white-space: normal;
+  overflow: visible;
+  margin: 0;
+}

@@ -1,0 +1,18 @@
+-- Propvia Property Dashboard — seed data (12 listings).
+-- Run after schema.sql to populate the properties table.
+
+insert into public.properties
+  (title, description, price, location, property_type, bedrooms, bathrooms, square_feet, image_url, latent_value_score)
+values
+  ('Restored Craftsman with Income Potential', 'Three-bed Craftsman near the transit corridor with an unfinished basement primed for an ADU conversion.', 312000, 'Indianapolis, IN', 'Single Family', 3, 2, 1840, 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=70', 84),
+  ('Downtown Loft Steps from the Cultural Trail', 'Open-concept condo with exposed brick, high ceilings, and strong short-term rental comps.', 268500, 'Indianapolis, IN', 'Condo', 1, 1, 980, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=70', 71),
+  ('Duplex with Below-Market Rents', 'Side-by-side duplex with long-term tenants and clear upside on lease renewals.', 415000, 'Carmel, IN', 'Multi-Family', 4, 3, 2600, 'https://images.unsplash.com/photo-1572120360610-d971b9d7767c?auto=format&fit=crop&w=800&q=70', 90),
+  ('Suburban Townhome Near Top Schools', 'Low-maintenance townhome with an attached garage and a sought-after school district.', 289900, 'Fishers, IN', 'Townhouse', 3, 2.5, 1720, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=70', 66),
+  ('Mixed-Use Storefront on Main', 'Ground-floor retail with a vacant second-floor unit ready to lease or convert to residential.', 540000, 'Noblesville, IN', 'Commercial', 0, 2, 3400, 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=70', 78),
+  ('Mid-Century Ranch on a Double Lot', 'Single-level ranch with an oversized lot offering subdivision or expansion potential.', 245000, 'Greenwood, IN', 'Single Family', 3, 1.5, 1500, 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=70', 62),
+  ('Lakeview Condo with Updated Systems', 'Move-in-ready condo with new HVAC and water heater; low HOA relative to comparable units.', 199000, 'Indianapolis, IN', 'Condo', 2, 2, 1150, 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=800&q=70', 58),
+  ('Four-Plex with Value-Add Renovation Plan', 'Stabilized four-plex with two units due for cosmetic refresh and rent repositioning.', 720000, 'Indianapolis, IN', 'Multi-Family', 8, 4, 4200, 'https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=800&q=70', 93),
+  ('Garden Townhome with Finished Basement', 'Spacious townhome with a finished lower level ideal for a rental suite or home office.', 305000, 'Westfield, IN', 'Townhouse', 3, 3, 2000, 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=800&q=70', 69),
+  ('Brick Bungalow in Emerging Neighborhood', 'Solid brick bungalow on a block with rising comps and active infill development.', 178000, 'Indianapolis, IN', 'Single Family', 2, 1, 1100, 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=70', 75),
+  ('Executive Home with Home-Office Wing', 'Five-bedroom home with a dedicated office wing well suited to remote-work buyers.', 615000, 'Carmel, IN', 'Single Family', 5, 4, 3800, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=70', 81),
+  ('Corner Retail Unit with Drive-Through', 'High-visibility corner commercial unit with an existing drive-through lane and ample parking.', 480000, 'Fishers, IN', 'Commercial', 0, 1, 2900, 'https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&w=800&q=70', 73);
