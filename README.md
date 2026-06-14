@@ -1,6 +1,6 @@
 # Mini Property Dashboard
 
-> **Live demo:** _add your Vercel URL here once deployed_ → `https://your-app.vercel.app`
+> **Live demo:** [https://property-dashboard-alpha.vercel.app](https://property-dashboard-alpha.vercel.app)
 
 A full-stack property dashboard built for the Propvia Full Stack Development Internship assessment. It lets an agent or internal operator browse a portfolio of listings, search and filter across multiple criteria in real time, add new properties through a validated form, and read at-a-glance analytics that surface **hidden value** across the dataset.
 
