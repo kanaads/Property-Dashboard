@@ -68,8 +68,22 @@ export function AddPropertyForm({ onSuccess, onCancel }: AddPropertyFormProps) {
           />
         </div>
 
-        <input type="hidden" {...register('description')} value="A new property listing added to the portfolio." />
-        <input type="hidden" {...register('image_url')} value="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&auto=format&fit=crop" />
+        <Input
+          id="description"
+          label="Property description"
+          placeholder="Brief description of the listing..."
+          {...register('description')}
+          error={errors.description?.message}
+        />
+
+        <Input
+          id="image_url"
+          label="Image URL"
+          placeholder="https://example.com/image.jpg"
+          {...register('image_url')}
+          error={errors.image_url?.message}
+        />
+
         <input type="hidden" {...register('latent_value_score', { valueAsNumber: true })} value={Math.floor(Math.random() * 40) + 50} />
 
         <Select
