@@ -1,56 +1,49 @@
 # Propvia Property Dashboard
+A full-stack property portfolio dashboard designed for internal agents to surface hidden asset value.
 
-> **Live Deployment:** [https://property-dashboard-alpha.vercel.app](https://property-dashboard-alpha.vercel.app)
+[Live Demo](https://property-dashboard-alpha.vercel.app)
+[GitHub Repository](https://github.com/kanaads/Property-Dashboard)
 
-A full-stack property dashboard built for the Propvia Full Stack Development Internship assessment. It allows users to browse a portfolio of listings, search and filter across multiple criteria, add new properties, and view dynamic analytics highlighting latent property value.
+## Approach
 
-## Approach & Architecture
+This application operates as a fast Single Page Application using React and Vite rather than a server-rendered framework like Next.js. Because this is an internal administrative tool, search engine indexing is irrelevant. The Vite architecture provides immediate development reloading and optimized client bundles, focusing effort entirely on client-side filtering complexity.
 
-- **Frontend:** Built with React 19 and Vite for a fast, responsive Single Page Application experience.
-- **Styling:** Tailwind CSS v4 paired with a custom Claude Design System implementation for a clean, professional, and accessible UI.
-- **State & Data Fetching:** TanStack Query handles server state, caching, and loading states.
-- **Forms & Validation:** React Hook Form + Zod provides highly performant, type-safe data ingestion with strict schema validation.
-- **Backend:** Supabase (PostgreSQL) powers the live database, chosen for its powerful native relational filtering capabilities.
-- **Accessibility:** Fully keyboard navigable, screen-reader friendly, and audited with `eslint-plugin-jsx-a11y` and `@axe-core/react`.
+Real estate data requires rigorous relational querying involving numerical ranges and categories. Supabase and PostgreSQL were chosen over NoSQL options like Firebase because relational databases natively support these complex queries without forcing expensive client-side data stitching or unpredictable per-read document costs.
 
-## Project Setup
+The central design decision is the Latent Value Score, reflecting the core business model of identifying hidden property potential. Instead of merely listing square footage, the dashboard actively visualizes this score, transforming raw data into an actionable commercial signal for the agent.
 
-### Prerequisites
-- Node.js 18+
-- npm
+The codebase uses a feature-based structure to encapsulate logic. TanStack Query manages asynchronous server state, ensuring interface responsiveness. Data ingestion relies on React Hook Form paired with a Zod schema that mirrors the backend PostgreSQL constraints, guaranteeing end-to-end type safety before network mutation.
 
-### 1. Installation
-Clone the repository and install dependencies:
-```bash
-git clone https://github.com/kanaads/Property-Dashboard.git
-cd Property-Dashboard
-npm install
+## Stack
+
+| Layer | Choice | Why |
+| --- | --- | --- |
+| Frontend | React 19 + Vite | Fast compilation and minimal client bundles for an SPA |
+| Language | TypeScript | Static typing prevents runtime errors across data boundaries |
+| Styling | Tailwind CSS v4 | Rapid, utility-first styling with custom design tokens |
+| Data/State | TanStack Query v5 | Handles server state caching, deduping, and loading |
+| Routing | React Router v7 | Robust client-side routing for nested layouts |
+| Forms | React Hook Form + Zod | Performant inputs with rigorous schema validation |
+| Backend | Supabase (PostgreSQL) | Native relational querying and predictable compute pricing |
+| Charts | Recharts | Lightweight data visualization for aggregate metrics |
+
+## Setup
+
+1. Clone the repository and run `npm install`.
+2. Run `npm run dev`. If no environment credentials are provided, the application automatically boots in a fully functional demo mode using bundled seed data.
+3. Optional: To connect to a live Supabase instance, copy `.env.example` to `.env`, execute `supabase/schema.sql` and `supabase/seed.sql` in your SQL editor, and restart the server.
+
+## Environment Variables
+
+```env
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-public-key
 ```
+Note: Only the anonymous public key belongs in the frontend environment. Access control is handled by Row Level Security policies.
 
-### 2. Local Development (Demo Mode)
-To run the dashboard locally with bundled seed data (no database required):
-```bash
-npm run dev
-```
-Open `http://localhost:5173` in your browser.
+## Deploy
 
-### 3. Connect to Live Supabase (Optional)
-To connect the local environment to the live production database:
-1. Copy the environment variables template:
-   ```bash
-   cp .env.example .env
-   ```
-2. Add your Supabase credentials:
-   ```env
-   VITE_SUPABASE_URL=https://your-project-ref.supabase.co
-   VITE_SUPABASE_ANON_KEY=your-anon-public-key
-   ```
-3. Restart the development server. The Demo Mode banner will disappear, and the app will sync with the live database.
-
-## Key Features Implemented
-- ✅ Property listing page with grid/list views
-- ✅ Multi-criteria search and filter engine
-- ✅ Validated form to add new properties
-- ✅ Supabase PostgreSQL database integration
-- ✅ Live Vercel deployment
-- ✅ Fully responsive and accessible UI
+Push the repository to GitHub.
+Import the project into Vercel.
+Add the two Supabase environment variables in the project settings.
+Deploy the application. The included vercel.json file handles all SPA routing rewrites.
