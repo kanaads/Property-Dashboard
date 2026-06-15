@@ -150,7 +150,7 @@ export function PropertyGrid({ view, properties, isLoading, isError, toggleWatch
             type={property.property_type}
             score={property.latent_value_score}
             image={property.image_url || undefined}
-            favorite={property.favorite ?? property.watchlist}
+            favorite={property.favorite ?? false}
             onFavorite={(e) => {
               e.preventDefault();
               toggleWatchlist(property.id, property.favorite ?? false);

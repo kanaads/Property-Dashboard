@@ -14,7 +14,7 @@ interface FilterBarProps {
   onView: (view: string) => void;
 }
 
-export function FilterBar({ filters, onChange, resultCount, sort, onSort, view, onView }: FilterBarProps) {
+export function FilterBar({ filters, onChange, sort, onSort, view, onView }: FilterBarProps) {
   function set<K extends keyof PropertyFilters>(key: K, value: PropertyFilters[K]) {
     onChange({ ...filters, [key]: value });
   }
@@ -35,7 +35,7 @@ export function FilterBar({ filters, onChange, resultCount, sort, onSort, view, 
         <Select
           value={filters.propertyType}
           onChange={(e) => set('propertyType', e.target.value)}
-          options={PROPERTY_TYPES}
+          options={[...PROPERTY_TYPES]}
           placeholder="Any type"
         />
         <Input

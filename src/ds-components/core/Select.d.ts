@@ -16,6 +16,7 @@ export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectE
   options: Array<string | SelectOption>;
   /** Leading empty option label. */
   placeholder?: string;
+  error?: string;
 }
 
 export function Select(props: SelectProps): JSX.Element;

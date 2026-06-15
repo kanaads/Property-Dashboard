@@ -29,13 +29,13 @@ export function DashboardPage() {
   const propertiesWithFavs = useMemo(() => {
     return properties.map(p => ({
       ...p,
-      favorite: watchState[p.id] ?? p.watchlist
+      favorite: watchState[p.id] ?? false
     }));
   }, [properties, watchState]);
 
   const filtered = useMemo(() => {
     let list = propertiesWithFavs.filter(p => tab === "all" || p.favorite);
-    list = filterProperties(list, filters);
+    list = filterProperties(list, filters) as typeof list;
     list.sort((a, b) => {
       if (sort === "score") return b.latent_value_score - a.latent_value_score;
       if (sort === "price-desc") return b.price - a.price;

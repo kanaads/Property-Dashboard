@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Bath, BedDouble, Building2, MapPin, Ruler } from 'lucide-react';
 import type { Property } from '@/lib/database.types';
-import { ValueGauge } from '@/shared/components/ui/ValueGauge';
 
 const currency = new Intl.NumberFormat('en-US', {
   style: 'currency',

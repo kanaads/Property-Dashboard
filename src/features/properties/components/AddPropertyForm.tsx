@@ -17,14 +17,6 @@ interface AddPropertyFormProps {
   onCancel: () => void;
 }
 
-function FieldError({ id, message }: { id: string; message?: string }) {
-  if (!message) return null;
-  return (
-    <p id={id} role="alert" className="mt-1 text-xs font-medium text-red-600">
-      {message}
-    </p>
-  );
-}
 
 export function AddPropertyForm({ onSuccess, onCancel }: AddPropertyFormProps) {
   const { schema, defaultValues } = usePropertySchema();
@@ -84,7 +76,7 @@ export function AddPropertyForm({ onSuccess, onCancel }: AddPropertyFormProps) {
           id="property_type"
           label="Property type"
           {...register('property_type')}
-          options={PROPERTY_TYPES}
+          options={[...PROPERTY_TYPES]}
           error={errors.property_type?.message}
         />
 

@@ -4,11 +4,7 @@ import type { Property } from '@/lib/database.types';
 import { Card } from '@/ds-components/surfaces/Card.jsx';
 import { StatCard } from '@/ds-components/surfaces/StatCard.jsx';
 
-const currency = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  maximumFractionDigits: 0,
-});
+
 
 const fmtM = (v: number) => {
   if (v >= 1e6) return "$" + (v / 1e6).toFixed(1) + "M";
