@@ -1,0 +1,63 @@
+/* ============================================================
+   PROPVIA — TYPOGRAPHY TOKENS
+   Display: Schibsted Grotesk · UI/Body: Hanken Grotesk
+   Data figures: IBM Plex Mono (tabular)
+   ============================================================ */
+
+:root {
+  /* Families */
+  --font-display: "Schibsted Grotesk", "Hanken Grotesk", system-ui, sans-serif;
+  --font-sans:    "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Weights */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* Type scale (px → rem @16) — tight, data-dense */
+  --text-2xs:  0.6875rem; /* 11 — micro labels, table meta */
+  --text-xs:   0.75rem;   /* 12 — captions, chips          */
+  --text-sm:   0.8125rem; /* 13 — secondary UI, table body */
+  --text-base: 0.875rem;  /* 14 — default body / UI        */
+  --text-md:   1rem;      /* 16 — emphasized body          */
+  --text-lg:   1.125rem;  /* 18 — card titles              */
+  --text-xl:   1.375rem;  /* 22 — section headings         */
+  --text-2xl:  1.75rem;   /* 28 — page titles              */
+  --text-3xl:  2.25rem;   /* 36 — stat figures             */
+  --text-4xl:  3rem;      /* 48 — hero figures             */
+
+  /* Line heights */
+  --leading-tight:   1.12;
+  --leading-snug:    1.28;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* Letter spacing */
+  --tracking-tighter: -0.02em;
+  --tracking-tight:   -0.012em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.02em;
+  --tracking-caps:    0.07em;  /* eyebrows / overline labels */
+
+  /* Semantic roles */
+  --font-page-title:    var(--weight-semibold) var(--text-2xl)/var(--leading-tight) var(--font-display);
+  --font-section-title: var(--weight-semibold) var(--text-xl)/var(--leading-snug) var(--font-display);
+  --font-card-title:    var(--weight-semibold) var(--text-lg)/var(--leading-snug) var(--font-sans);
+  --font-body:          var(--weight-regular) var(--text-base)/var(--leading-normal) var(--font-sans);
+  --font-body-sm:       var(--weight-regular) var(--text-sm)/var(--leading-normal) var(--font-sans);
+  --font-label:         var(--weight-medium) var(--text-sm)/1.2 var(--font-sans);
+  --font-eyebrow:       var(--weight-semibold) var(--text-2xs)/1.1 var(--font-sans);
+  --font-data:          var(--weight-medium) var(--text-base)/1.2 var(--font-mono);
+  --font-data-lg:       var(--weight-semibold) var(--text-3xl)/1 var(--font-mono);
+}
+
+/* Utility intent (optional helpers, not required) */
+.eyebrow {
+  font: var(--font-eyebrow);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }

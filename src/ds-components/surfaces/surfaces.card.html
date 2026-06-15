@@ -1,0 +1,46 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Surfaces — Card & StatCard" subtitle="Base card surface and the analytics KPI tile" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; background: var(--surface-app); padding: 24px; }
+  #root { max-width: 660px; }
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel" data-presets="react">
+const { Card, StatCard, Button, IconButton, Badge } = window.PropviaDesignSystem_f80a0d;
+const Ic = ({ d }) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" dangerouslySetInnerHTML={{ __html: d }} />;
+const WALLET = '<path d="M3 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2"/><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H5"/><circle cx="16" cy="13" r="1.4"/>';
+const SQFT = '<path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/>';
+const HOME = '<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/>';
+const DOTS = '<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>';
+
+function Demo() {
+  return (
+    <div>
+      <div className="stats">
+        <StatCard label="Portfolio value" value="$48.2M" delta="+4.2%" deltaDirection="up" note="vs last month" icon={<Ic d={WALLET} />} />
+        <StatCard label="Avg price / sqft" value="$312" delta="-1.1%" deltaDirection="down" note="vs last month" icon={<Ic d={SQFT} />} />
+      </div>
+      <Card title="Price per sqft by type" subtitle="Trailing 90 days" action={<IconButton label="More"><Ic d={DOTS} /></IconButton>}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <span style={{ font: "var(--font-body-sm)", color: "var(--text-secondary)" }}>Card surface with header, subtitle and action slot.</span>
+          <Badge tone="brand" pill icon={<Ic d={HOME} />}>128 listings</Badge>
+        </div>
+      </Card>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body>
+</html>

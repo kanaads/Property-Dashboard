@@ -1,0 +1,9 @@
+/* ============================================================
+   PROPVIA — WEBFONTS
+   Schibsted Grotesk · Hanken Grotesk · IBM Plex Mono
+   Served from the Google Fonts CDN. See readme.md → CAVEATS:
+   for fully-offline use, self-host the woff2 files and swap
+   these @font-face src URLs to local assets.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');

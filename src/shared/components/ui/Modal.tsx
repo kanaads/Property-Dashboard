@@ -5,6 +5,7 @@ import { Button } from './Button';
 interface ModalProps {
   open: boolean;
   title: string;
+  subtitle?: string;
   onClose: () => void;
   children: ReactNode;
 }
@@ -16,7 +17,7 @@ const FOCUSABLE =
  * Dialog with focus trapping + focus restoration to the trigger (Phase 6).
  * Esc closes; Tab/Shift+Tab cycle within the dialog.
  */
-export function Modal({ open, title, onClose, children }: ModalProps) {
+export function Modal({ open, title, subtitle, onClose, children }: ModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
 
@@ -59,7 +60,7 @@ export function Modal({ open, title, onClose, children }: ModalProps) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-navy-900/50 p-4 sm:items-center">
+    <div className="pv-modal">
       <button
         type="button"
         aria-label="Close dialog"
@@ -72,18 +73,31 @@ export function Modal({ open, title, onClose, children }: ModalProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
-        className="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl"
+        className="pv-modal__panel relative z-10"
       >
-        <div className="mb-4 flex items-center justify-between">
-          <h2 id="modal-title" className="text-lg font-bold text-navy-900">
-            {title}
-          </h2>
-          <Button variant="ghost" onClick={onClose} aria-label="Close dialog" className="px-2">
-            <X size={18} aria-hidden="true" />
-          </Button>
+        <div className="pv-modal__head">
+          <div>
+            <h2 id="modal-title" className="pv-modal__title">
+              {title}
+            </h2>
+            {subtitle && (
+              <p className="pv-modal__sub">
+                {subtitle}
+              </p>
+            )}
+          </div>
+          <button 
+            type="button"
+            onClick={onClose} 
+            aria-label="Close dialog" 
+            className="pv-modal__close"
+          >
+            <X size={18} strokeWidth={2} aria-hidden="true" />
+          </button>
         </div>
         {children}
       </div>
     </div>
   );
 }
+

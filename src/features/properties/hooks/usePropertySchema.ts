@@ -35,14 +35,14 @@ export function usePropertySchema(): {
 
   const defaultValues: PropertyFormValues = {
     title: '',
-    description: '',
+    description: 'A new property listing added to the portfolio.',
     price: 0,
     location: '',
     property_type: PROPERTY_TYPES[0],
     bedrooms: 0,
     bathrooms: 0,
     square_feet: 0,
-    image_url: '',
+    image_url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&auto=format&fit=crop',
     latent_value_score: 50,
   };
 

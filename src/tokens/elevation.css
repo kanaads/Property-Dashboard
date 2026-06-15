@@ -1,0 +1,31 @@
+/* ============================================================
+   PROPVIA — ELEVATION (shadows) & FOCUS
+   Restrained, cool-toned shadows. Depth comes from hairline
+   borders first, shadow second — never glow.
+   ============================================================ */
+
+:root {
+  /* Ambient + key, tuned to slate-900 at low alpha */
+  --shadow-xs:  0 1px 2px rgba(14, 20, 27, 0.06);
+  --shadow-sm:  0 1px 2px rgba(14, 20, 27, 0.05),
+                0 2px 6px rgba(14, 20, 27, 0.05);
+  --shadow-md:  0 2px 4px rgba(14, 20, 27, 0.05),
+                0 6px 16px rgba(14, 20, 27, 0.08);
+  --shadow-lg:  0 4px 8px rgba(14, 20, 27, 0.06),
+                0 16px 32px rgba(14, 20, 27, 0.12);
+  --shadow-xl:  0 8px 16px rgba(14, 20, 27, 0.08),
+                0 28px 56px rgba(14, 20, 27, 0.16);
+
+  /* Inset for sunken wells / inputs */
+  --shadow-inset: inset 0 1px 2px rgba(14, 20, 27, 0.06);
+
+  /* Card resting + hover lift */
+  --elev-card:       var(--shadow-sm);
+  --elev-card-hover: var(--shadow-md);
+  --elev-popover:    var(--shadow-lg);
+  --elev-modal:      var(--shadow-xl);
+
+  /* Focus ring (brand) */
+  --focus-ring:       0 0 0 3px var(--brand-ring);
+  --focus-ring-inset: inset 0 0 0 1.5px var(--border-focus);
+}

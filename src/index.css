@@ -1,21 +1,64 @@
+@import url('./ds-styles.css');
+@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 @import 'tailwindcss';
-
-/* Tailwind v4 design tokens — no tailwind.config.js needed (Phase 2).
-   Real-estate palette: deep navy primary, soft-blue accent. */
+/* Tailwind v4 design tokens — no tailwind.config.js needed.
+   Direction: a refined PropTech "value terminal" — light, data-dense canvas,
+   navy authority palette, and a tiered gauge color system as the signature. */
 @theme {
-  --color-navy-50: #eaf1f8;
-  --color-navy-100: #c9dcef;
-  --color-navy-500: #1f4f86;
-  --color-navy-700: #123a66;
-  --color-navy-900: #0a2c56;
+  /* ---- Neutral spine (cool slate) ---- */
+  --color-slate-950: #0A0F14;
+  --color-slate-900: #0E141B;
+  --color-slate-850: #131B23;
+  --color-slate-800: #1A242D;
+  --color-slate-700: #273440;
+  --color-slate-600: #3A4A57;
+  --color-slate-500: #566673;
+  --color-slate-400: #7E8C98;
+  --color-slate-300: #A9B4BD;
+  --color-slate-200: #CBD3D9;
+  --color-slate-150: #DEE4E8;
+  --color-slate-100: #EAEEF1;
+  --color-slate-50:  #F4F6F8;
+  --color-slate-25:  #FAFBFC;
+  --color-white:     #FFFFFF;
 
-  --color-sky-accent: #89cefd;
-  --color-sky-soft: #d6ecfd;
+  /* ---- Primary — Propvia Emerald ---- */
+  --color-emerald-900: #053227;
+  --color-emerald-800: #074635;
+  --color-emerald-700: #0A5C44;
+  --color-emerald-600: #0C7152;
+  --color-emerald-500: #138A65;
+  --color-emerald-400: #25A87D;
+  --color-emerald-300: #6AC6A4;
+  --color-emerald-200: #A9E0CC;
+  --color-emerald-100: #D7F1E7;
+  --color-emerald-50:  #EEF8F3;
 
-  --color-surface: #ffffff;
-  --color-canvas: #f5f7fa;
+  /* ---- Signal Gold ---- */
+  --color-gold-700: #936A12;
+  --color-gold-600: #B5841B;
+  --color-gold-500: #D29B24;
+  --color-gold-400: #E2B348;
+  --color-gold-300: #EFCD80;
+  --color-gold-100: #F8ECCB;
+  --color-gold-50:  #FCF6E7;
 
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  /* Gauge tiers — the value-score signal. */
+  --color-gauge-high: var(--color-emerald-600);
+  --color-gauge-mid: var(--color-gold-600);
+  --color-gauge-low: var(--color-slate-500);
+
+  /* Aliases */
+  --color-brand: var(--color-emerald-600);
+  --color-brand-hover: var(--color-emerald-700);
+
+  --color-surface: var(--color-white);
+  --color-canvas: var(--color-slate-50);
+
+  /* Fonts */
+  --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
 html,
@@ -27,20 +70,140 @@ body,
 body {
   margin: 0;
   background-color: var(--color-canvas);
+  background-image: radial-gradient(120% 80% at 50% -10%,
+      rgba(90, 176, 245, 0.1) 0%,
+      rgba(243, 246, 251, 0) 55%);
+  background-attachment: fixed;
   color: var(--color-navy-900);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 
-/* Visible focus indicators for keyboard users (Phase 6 — WCAG focus rule). */
+.font-display {
+  font-family: var(--font-display);
+  font-feature-settings: 'tnum' 1;
+  letter-spacing: -0.01em;
+}
+
+/* Visible focus indicators for keyboard users (WCAG 2.4.7). */
 *:focus-visible {
   outline: 3px solid var(--color-sky-accent);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Skip-link — visually hidden until focused (WCAG 2.4.1).
-   Defined here so it wins the cascade over any Tailwind base reset. */
+/* Card hover lift + image zoom — restrained, and disabled for reduced motion. */
+.card-lift {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.card-lift:hover,
+.card-lift:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -22px rgba(10, 37, 64, 0.45);
+}
+
+.card-media img {
+  transition: transform 0.4s ease;
+}
+
+.card-lift:hover .card-media img,
+.card-lift:focus-within .card-media img {
+  transform: scale(1.06);
+}
+
+/* Gauge arc "reveal" — draws on from zero when the score first mounts. */
+.gauge-arc {
+  transition:
+    stroke-dashoffset 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    stroke 0.3s ease;
+}
+
+/* Halo glow — the one aesthetic risk. Reserved for "strong value" (>=80)
+   gauges only, signalling a listing that's worth a second look. */
+.gauge-halo {
+  position: absolute;
+  inset: -22%;
+  border-radius: 9999px;
+  background: radial-gradient(circle,
+      color-mix(in srgb, var(--color-gauge-high) 55%, transparent) 0%,
+      transparent 70%);
+  filter: blur(6px);
+  animation: gauge-pulse 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes gauge-pulse {
+
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.94);
+  }
+
+  50% {
+    opacity: 0.85;
+    transform: scale(1.04);
+  }
+}
+
+/* Shimmer sweep for loading skeletons. */
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-navy-50);
+}
+
+.skeleton-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.55),
+      transparent);
+  animation: shimmer-sweep 1.6s ease-in-out infinite;
+}
+
+@keyframes shimmer-sweep {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .card-lift,
+  .card-media img,
+  .gauge-arc {
+    transition: none;
+  }
+
+  .card-lift:hover,
+  .card-lift:focus-within {
+    transform: none;
+  }
+
+  .card-lift:hover .card-media img,
+  .card-lift:focus-within .card-media img {
+    transform: none;
+  }
+
+  .gauge-halo {
+    animation: none;
+    opacity: 0.55;
+  }
+
+  .skeleton-shimmer::after {
+    animation: none;
+    display: none;
+  }
+}
+
+/* Skip-link — visually hidden until focused (WCAG 2.4.1). */
 .skip-link {
   position: absolute;
   width: 1px;
@@ -60,4 +223,18 @@ body {
   white-space: normal;
   overflow: visible;
   margin: 0;
+}
+
+.pv-chart-card .pv-chart {
+  height: 220px !important;
+  margin-top: 1rem;
+  align-items: stretch !important;
+}
+
+.pv-chart__col {
+  height: 100%;
+}
+
+.pv-chart__bar-wrap {
+  height: 100%;
 }

@@ -1,0 +1,41 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Property Card" subtitle="The core repeating listing unit — photo, type, Latent Value Score, price & specs" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; background: var(--surface-app); padding: 24px; }
+  #root { max-width: 660px; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel" data-presets="react">
+const { PropertyCard } = window.PropviaDesignSystem_f80a0d;
+function Demo() {
+  const [fav, setFav] = React.useState(true);
+  return (
+    <div className="grid">
+      <PropertyCard
+        image="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80&auto=format&fit=crop"
+        title="The Linden — 24-unit multifamily" location="Logan Square, Chicago"
+        type="Multifamily" price={4250000} beds={24} baths={26} sqft={31200}
+        score={87} favorite={fav} onFavorite={() => setFav(!fav)} />
+      <PropertyCard
+        image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80&auto=format&fit=crop"
+        title="Halsted Commercial Block" location="West Loop, Chicago"
+        type="Office" price={9800000} beds={0} baths={8} sqft={54000}
+        score={52} favorite={false} onFavorite={() => {}} />
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body>
+</html>
